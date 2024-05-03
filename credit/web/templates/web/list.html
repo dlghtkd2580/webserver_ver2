@@ -1,0 +1,43 @@
+{%extends 'web/list_base.html'%}
+{%load static%}
+{%load  custom_tag%}
+{%block content%}
+<section id="list_section">
+<section id="first_section">
+  <div class="list_box">
+    <br><br>
+    <h1><신청목록></h1>
+    <br><br>
+    <a class="form_delete_all_btn" onclick="return delete_all_check('신청');" href="{%url 'web:form_delete_all'%}">전체삭제</a>
+    <br><br><br><br>
+    {%for form in forms%}
+      <a class="form_link" href="{%url 'web:form_view' form_pk=form.pk%}">[{{forloop.revcounter}}] {{form.date}} // {{form.name|text_slice}} // {{form.age}}세 // {{form.phone_number}} // {{form.region|text_slice}} // {{form.credit_amount}}필요</a>
+      <a class="form_delete_btn" href="{%url 'web:form_delete' form_pk=form.pk%}">삭제</a>
+      <br><br>
+    {%endfor%}
+  </div>
+</section>
+<section id="second_section">
+  <br><br>
+  <h1><파일목록></h1>
+  <br><br>
+  <div class="list_box">
+    <a class="file_delete_all_btn" onclick="return delete_all_check('파일');" href="{%url 'web:file_delete_all'%}">전체삭제</a>
+    <br><br><br><br>
+    {%for time_arr,time_sorted_txt_list in zip_file%}
+      <form class="file_view_btn" name="file_view_btn" action="{%url 'web:file_view'%}" method="post">
+        {%csrf_token%}
+        <input style="display:none;" type="text" name="file_name" value="{{time_sorted_txt_list}}">
+        <button type="submit">[{{forloop.revcounter}}] {{time_arr}} {{time_sorted_txt_list}}</button>
+      </form>
+      <form class="file_delete_btn" name="file_delete_btn" action="{%url 'web:file_delete'%}" method="post">
+        {%csrf_token%}
+        <input style="display:none;" type="text" name="file_name" value="{{time_sorted_txt_list}}">
+        <button type="submit">삭제</button>
+      </form>
+      <br><br>
+    {%endfor%}
+  </div>
+</section>
+</section>
+{%endblock%}

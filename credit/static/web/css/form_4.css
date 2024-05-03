@@ -1,0 +1,17 @@
+.form_4_box > .btn_box{
+    text-align: center;
+}
+
+.no_line{
+    border:0;
+    width: 100%;
+    height: 160px;
+}
+
+#use_ps{
+    width:350px;
+    height: 150px;
+    border: 0.5px solid #8a8a8a;
+    border-radius: 5px;
+    font-size:14px;
+}

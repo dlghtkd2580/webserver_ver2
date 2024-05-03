@@ -1,0 +1,138 @@
+
+.form_1_box{
+    width: 100%;
+}
+
+.form_1_intro_box{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.form_1_intro_box > h1{
+    color:black;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.form_1_intro_box > h2{
+    color:#666666;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+
+.form_1_box > .btn_box{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.blue{
+    background-color: #0065d1;
+    color:white;
+    width:350px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+button{
+    cursor: pointer;
+}
+
+
+
+.form_2_box{
+    width: 100%;
+}
+.progress_box{
+    width: 100%;
+}
+
+.progress_box > div{
+    border: 0;
+    border-radius: 3px;
+    background-color: #e6e6e6;
+    width: 30px;
+    height: 5px;
+    float: left;
+}
+
+.form_2_intro_box{
+    width: 100%;
+}
+
+.form_2_intro_box > h1{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.input_box{
+    width:100%;
+    height: 30px;
+    border-bottom: 1px solid #8a8a8a;
+}
+
+.input_box > input{
+    border: 0;
+    color:#0065d1;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    color:black;
+}
+
+.input_box > label{
+    color:black;
+    font-size: 16px;
+}
+
+.form_2_box > .btn_box{
+    text-align: center;
+}
+
+#phone_number_1, #phone_number_2, #phone_number_3{
+    width: 100px;
+    display: inline-block;
+}
+
+#phone_number_2, #phone_number_3{
+    margin-left: 5px;
+}
+
+.form_3_box > .btn_box{
+    text-align: center;
+}
+
+.form_4_box > .btn_box{
+    text-align: center;
+}
+
+.no_line{
+    border:0;
+    width: 100%;
+    height: 160px;
+}
+
+#use_ps{
+    width:350px;
+    height: 150px;
+    border: 0.5px solid #8a8a8a;
+    border-radius: 5px;
+    font-size:14px;
+}
+
+.form_5_box > .btn_box{
+    text-align: center;
+}
+
+.form_6_box > .btn_box{
+    text-align: center;
+}
+
+.hidden{
+    display: none;
+}

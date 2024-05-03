@@ -1,0 +1,144 @@
+{%extends 'web/list_base.html'%}
+{%load static%}
+{%block content%}
+  <div class="form_view_box">
+    <table class="form_view_table">
+        <tr>
+          <th>신청날짜</th>
+          <th>{{form.date}}</th>
+        </tr>
+        <tr>
+          <th>이름</th>
+          <th>{{form.name}}</th>
+        </tr>
+        <tr>
+          <th>전화번호</th>
+          <th>{{form.phone_number}}</th>
+        </tr>
+        <tr>
+          <th>주소</th>
+          <th>{{form.region}}</th>
+        </tr>
+        <tr>
+          <th>나이</th>
+          <th>{{form.age}}세</th>
+        </tr>
+        <tr>
+          <th>성별</th>
+          <th>
+            {%if form.gender == 'man'%}
+            남자
+            {%else%}
+            여자
+            {%endif%}
+          </th>
+        </tr>
+        <tr>
+          <th>결혼여부</th>
+          <th>
+            {%if form.is_married == 'marry'%}
+            기혼
+            {%elif form.is_married == 'not_marry'%}
+            미혼
+            {%else%}
+            이혼
+            {%endif%}
+          </th>
+        </tr>
+        <tr>
+          <th>자녀여부</th>
+          <th>
+            {%if form.is_child == 'not_child'%}
+            자녀없음
+            {%elif form.is_child == 'raise_child'%}
+            있음(육아)
+            {%else%}
+            있음(육아안함)
+            {%endif%}
+          </th>
+        </tr>
+        <tr>
+          <th>직업</th>
+          <th>{{form.job}}</th>
+        </tr>
+        <tr>
+          <th>급여</th>
+          <th>{{form.pay}}만원</th>
+        </tr>
+        <tr>
+          <th>급여날짜</th>
+          <th>매달 {{form.pay_day}}일</th>
+        </tr>
+        <tr>
+          <th>개인돈 사용여부</th>
+          <th>
+            {%if form.use_bool == 'yes'%}
+            있음
+            {%else%}
+            없음
+            {%endif%}
+          </th>
+        </tr>
+        <tr>
+          <th>개인돈 사용내역</th>
+          <th>{{form.use_ps|linebreaks}}</th>
+        </tr>
+        <tr>
+          <th>신용등급</th>
+          <th>{{form.credit_grade}}등급</th>
+        </tr>
+        <tr>
+          <th>기대출</th>
+          <th>
+            {%if form.holding_credit == 0%}
+            없음
+            {%else%}
+            {{form.holding_credit}}만원
+            {%endif%}
+          </th>
+        </tr>
+        <tr>
+          <th>자동차 보유</th>
+          <th>
+            {%if form.holding_car == 'yes'%}
+            있음
+            {%else%}
+            없음
+            {%endif%}
+          </th>
+        </tr>
+        <tr>
+          <th>거주 형태</th>
+          <th>
+            {%if form.holding_house == 'charter'%}
+            전세
+            {%elif form.holding_house == 'monthly'%}
+            월세
+            {%elif form.holding_house == 'hold'%}
+            본인명의
+            {%else%}
+            가족명의
+            {%endif%}
+          </th>
+        </tr>
+        <tr>
+          <th>대출신청금</th>
+          <th>{{form.credit_amount}}만원</th>
+        </tr>
+        <tr>
+          <th>원하는 상환방식</th>
+          <th>
+            {%if form.credit_date == 'daily'%}
+            일수
+            {%elif form.credit_date == 'monthly'%}
+            월상품
+            {%else%}
+            주상품
+            {%endif%}
+          </th>
+        </tr>
+
+    </table>
+
+  </div>
+{%endblock%}

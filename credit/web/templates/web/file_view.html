@@ -1,0 +1,24 @@
+{%extends 'web/list_base.html'%}
+{%load static%}
+{%block content%}
+<div class="file_text">
+  <h1>파일명 : {{file_name}}</h1>
+  <form class="file_delete_btn" name="file_delete_btn" action="{%url 'web:file_delete'%}" method="post">
+    {%csrf_token%}
+    <input style="display:none;" type="text" name="file_name" value="{{file_name}}">
+    <button type="submit">삭제</button>
+  </form>
+  <form class="file_edit_btn" name="file_edit_btn" action="{%url 'web:file_edit'%}" method="post" onsubmit="return validate_edit();">
+    {%csrf_token%}
+    <input style="display:none;" type="text" name="file_name" value="{{file_name}}">
+    <input id="file_new_name" type="text" name="file_new_name" placeholder="파일명 입력">
+    <button type="submit">수정</button>
+  </form>
+  <br><br>
+  <p>
+    {%for line in text%}
+      {{line|linebreaks}}
+    {%endfor%}
+  </p>
+</div>
+{%endblock%}

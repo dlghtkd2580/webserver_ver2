@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+.form_box{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  line-height: 30px;
+}
+
+.input_box p{
+  font-size: 12px;
+}
+
+.input_box h1{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.input_box input:not(.radio,#file_btn,#region,#job){
+  border:0.5px solid #c4c4c4;
+  border-radius: 3px;
+  width: 100px;
+  height: 30px;
+  color: black;
+  padding: 3px;
+}
+
+
+.input_box input::placeholder{
+  color: #c4c4c4;
+  padding: 3px;
+}
+
+#region, #job{
+  width: 324px;
+  border:0.5px solid #c4c4c4;
+  border-radius: 3px;
+  height: 30px;
+  color: black;
+  padding: 3px;
+}
+
+.input_box textarea{
+  padding: 3px;
+  width: 324px;
+  height: 200px;
+}
+
+.form_box .btn_box{
+  text-align: center;
+}
+
+.form_box .btn_box button{
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+  width: 300px;
+  height: 40px;
+  border: 0px;
+  background: #1e2d3b;
+  color:white;
+}
+
+.form_box .file_box label{
+  position: absolute;
+  background: #337ab7;
+  font-size:14px;
+  color: white;
+  width: 100px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.file_box input[type="file"]{
+  display: inline-block;
+  width: 150px;
+  height: 20px;
+  overflow: hidden;
+  color: black;
+  font-size: 10px;
+}
+
+#file_btn{
+  display: none;
+}

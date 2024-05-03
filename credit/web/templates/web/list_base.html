@@ -1,0 +1,31 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="{%static 'web/js/validate.js'%}"></script>
+    <script type="text/javascript" src="{%static 'web/js/btn.js'%}"></script>
+    <link rel="stylesheet" href="{%static 'web/css/reset.css'%}">
+    <link rel="stylesheet" href="{%static 'web/css/list_base.css'%}">
+    <link rel="stylesheet" href="{%static 'web/css/list.css'%}">
+    <link rel="stylesheet" href="{%static 'web/css/form_view.css'%}">
+    <link rel="stylesheet" href="{%static 'web/css/file_view.css'%}">
+    <title>관리페이지</title>
+  </head>
+  <body>
+    <section id="header_section">
+      <div class="header_box">
+        <a class="renew_btn" href="{%url 'web:list'%}">관리페이지</a>
+        <p>* 새로고침하시면 DB가 업데이트 됩니다.     * 종료시 보안상 무조건 로그아웃 및 해당 브라우저의 인터넷 사용기록과 쿠키를 삭제하세요.</p>
+        <a class="logout_btn" href="{%url 'web:logout'%}">로그아웃</a>
+      </div>
+    </section>
+    {%block content%}
+    {%endblock%}
+  </body>

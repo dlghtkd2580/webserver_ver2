@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#header_section{
+  width: 100%;
+  height: 70px;
+}
+
+.header_box{
+  width: 100%;
+  height: 100%;
+  background: #1e2d3b;
+}
+
+.renew_btn{
+  line-height: 70px;
+  padding-left: 30px;
+  display: inline;
+  font-size: 26px;
+  color: white;
+  font-weight: 300;
+}
+
+.header_box p{
+  display: inline;
+  font-size: 12px;
+  font-weight: 300;
+  color: white;
+}
+
+.logout_btn{
+  margin-top: 15px;
+  margin-right: 30px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 8px;
+  float:right;
+  width: 100px;
+  height: 40px;
+  color: #1e2d3b;
+  background: white;
+  font-weight: 500;
+}
+
+@media all and (max-width:1280px) {
+
+  .header_box > p{
+    display: none;
+  }
+
+}

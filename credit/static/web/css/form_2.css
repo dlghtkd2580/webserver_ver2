@@ -1,0 +1,62 @@
+
+
+.form_2_box{
+    width: 100%;
+}
+.progress_box{
+    width: 100%;
+}
+
+.progress_box > div{
+    border: 0;
+    border-radius: 3px;
+    background-color: #e6e6e6;
+    width: 30px;
+    height: 5px;
+    float: left;
+}
+
+.form_2_intro_box{
+    width: 100%;
+}
+
+.form_2_intro_box > h1{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.input_box{
+    width:100%;
+    height: 30px;
+    border-bottom: 1px solid #8a8a8a;
+}
+
+.input_box > input{
+    border: 0;
+    color:#0065d1;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    color:black;
+}
+
+.input_box > label{
+    color:black;
+    font-size: 16px;
+}
+
+.form_2_box > .btn_box{
+    text-align: center;
+}
+
+#phone_number_1, #phone_number_2, #phone_number_3{
+    width: 100px;
+    display: inline-block;
+}
+
+#phone_number_2, #phone_number_3{
+    margin-left: 5px;
+}
+

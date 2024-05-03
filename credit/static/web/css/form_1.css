@@ -1,0 +1,42 @@
+
+.form_1_box{
+    width: 100%;
+}
+
+.form_1_intro_box{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.form_1_intro_box > h1{
+    color:black;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.form_1_intro_box > h2{
+    color:#666666;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+
+.form_1_box > .btn_box{
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.blue{
+    background-color: #0065d1;
+    color:white;
+    width:350px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+button{
+    cursor: pointer;
+}

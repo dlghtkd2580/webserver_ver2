@@ -1,0 +1,214 @@
+{%extends 'web/form_base.html'%}
+{%load static%}
+{%block content%}
+    {%csrf_token%}
+    <form action="{%url 'web:new_form'%}" method="post">
+    <div id="form_2" class="form_2_box">
+        <div class="progress_box">
+            <div class="progress_1" style="background-color:#8a8a8a;"></div>
+            <div class="progress_2"></div>
+            <div class="progress_3"></div>
+            <div class="progress_4"></div>
+            <div class="progress_5"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>성함을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="name" type="text" name="name" placeholder="이름 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>나이를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="age" type="number" name="age" placeholder="나이 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>휴대폰 번호를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="phone_number_1" type="text" name="phone_number_1" value="010" placeholder="입력">
+            <input id="phone_number_2" type="text" name="phone_number_2" placeholder="앞 번호">
+            <input id="phone_number_3" type="text" name="phone_number_3" placeholder="뒷 번호">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>거주지를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="region" type="text" name="region" placeholder="주소 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>성별을 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="man" type="radio" name="gender" value="man" checked>
+            <label for='man'>남성</label>
+            <input class="radio" id="woman" type="radio" name="gender" value="woman">
+            <label for='woman'>여성</label>
+        </div><br><br>
+        <div class="btn_box"onclick="return validate_form('form_2');">
+            다음으로
+        </div>
+    </div>
+
+    <div id="form_3" class="form_3_box hidden">
+        <div class="progress_box">
+            <div class="progress_1"></div>
+            <div class="progress_2" style="background-color:#8a8a8a;"></div>
+            <div class="progress_3"></div>
+            <div class="progress_4"></div>
+            <div class="progress_5"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>직업을 직장명과 함께 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="job" type="text" name="job" placeholder="구체적으로 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>급여(웝 수입)을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="pay" type="number" name="pay" placeholder="(단위: 만원)">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>급여 일(정산 일)을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="pay_day" type="number" name="pay_day" placeholder="급여일 입력">
+        </div><br><br>
+        <div class="btn_box"onclick="return validate_form('form_3');">
+            다음으로
+        </div>
+    </div>
+
+    <div id="form_4" class="form_4_box hidden">
+        <div class="progress_box">
+            <div class="progress_1"></div>
+            <div class="progress_2"></div>
+            <div class="progress_3" style="background-color:#8a8a8a;"></div>
+            <div class="progress_4"></div>
+            <div class="progress_5"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>개인업체 사용여부를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="use_bool_yes" type="radio" name="use_bool" value="yes" checked>
+            <label for='use_bool_yes'>예</label>
+            <input  class="radio" id="use_bool_no" type="radio" name="use_bool" value="no">
+            <label for='use_bool_no'>아니오</label>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>개인업체를 사용해보신 적이 있으시다면,</h1><br>
+            <h1>남은 금액 및 상환날짜를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box no_line">
+            <textarea id="use_ps" name="use_ps" rows="20" cols="50"></textarea>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>신용 점수를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="credit_grade" type="number" name="credit_grade" placeholder="점수 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>은행권 기대출을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="holding_credit" type="number" name="holding_credit" placeholder="(단위: 만원)">
+        </div><br><br>
+        <div class="btn_box"onclick="return validate_form('form_4');">
+            다음으로
+        </div>
+    </div>
+
+    <div id="form_5" class="form_5_box hidden">
+        <div class="progress_box">
+                <div class="progress_1"></div>
+                <div class="progress_2"></div>
+                <div class="progress_3"></div>
+                <div class="progress_4" style="background-color:#8a8a8a;" ></div>
+                <div class="progress_5"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>결혼 여부를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="not_marry" type="radio" name="is_married" value="not_marry" checked>
+            <label for='not_marry'>미혼</label>
+            <input class="radio" id="marry" type="radio" name="is_married" value="marry">
+            <label for='marry'>기혼</label>
+            <input class="radio" id="miss_marry" type="radio" name="is_married" value="miss_marry">
+            <label for='miss_marry'>이혼</label>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>자녀 여부를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="not_child" type="radio" name="is_child" value="not_child" checked>
+            <label for='not_child'>없음</label>
+            <input class="radio" id="raise_child" type="radio" name="is_child" value="raise_child">
+            <label for='raise_child'>있음(육아)</label>
+            <input class="radio" id="not_raise_child" type="radio" name="is_child" value="not_raise_child">
+            <label for='not_raise_child'>있음(육아 안함)</label>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>자동차 소유 여부를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="holding_car_yes" type="radio" name="holding_car" value="yes" checked>
+            <label for='holding_car_yes'>예</label>
+            <input class="radio" id="holding_car_no" type="radio" name="holding_car" value="no">
+            <label for='holding_car_no'>아니오</label>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>거주지 형태를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="holding_house_monthly" type="radio" name="holding_house" value="monthly" checked>
+            <label for='holding_house_monthly'>월세</label>
+            <input class="radio" id="holding_house_charter" type="radio" name="holding_house" value="charter">
+            <label for='holding_house_charter'>전세</label>
+            <input class="radio" id="holding_house_hold" type="radio" name="holding_house" value="hold">
+            <label for='holding_house_hold'>본인 명의</label>
+            <input class="radio" id="holding_house_family" type="radio" name="holding_house" value="famliy_hold">
+            <label for='holding_house_family'>가족 명의</label>
+        </div><br><br>
+        <div class="btn_box" onclick="return validate_form('form_5');">
+            다음으로
+        </div>
+    </div>
+
+    <div id="form_6" class="form_6_box hidden">
+         <div class="progress_box">
+                <div class="progress_1"></div>
+                <div class="progress_2"></div>
+                <div class="progress_3"></div>
+                <div class="progress_4"></div>
+                <div class="progress_5" style="background-color:#8a8a8a;"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>심사 신청 금액을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="credit_amount" type="number" name="credit_amount" placeholder="(단위: 만원)">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>원하는 상품을 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="credit_date_daily" type="radio" name="credit_date" value="daily" checked>
+            <label for='credit_date_daily'>일수</label>
+            <input class="radio" id="credit_date_weekly" type="radio" name="credit_date" value="weekly">
+            <label for='credit_date_weekly'>주상품</label>
+            <input class="radio" id="credit_date_monthly" type="radio" name="credit_date" value="monthly">
+            <label for='credit_date_monthly'>월상품</label>
+        </div><br><br>
+        <div class="btn">
+            <button type="submit" class="blue" onclick="return validate_form('form_6')">신청 완료</button>
+        </div>
+    </div>
+
+    </form>
+{%endblock%}
