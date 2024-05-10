@@ -14,12 +14,6 @@ import subprocess
 
 path = "/root/"
 
-def main(request):
-	try:
-		return render(request, 'web/main.html')
-	except Exception as err:
-		HttpResponse(status=404)
-
 @method_decorator(csrf_exempt)
 def new_form(request):
 
