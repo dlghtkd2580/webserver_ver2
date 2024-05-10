@@ -1,9 +1,21 @@
 {%extends 'web/form_base.html'%}
 {%load static%}
 {%block content%}
+    <div id="form_1" class="form_1_box">
+        <div class="form_1_intro_box">
+            <h1>심사를 시작합니다!</h1><br>
+            <h2>해당 심사는 모아중개 제휴업체(개인대부업체)만의 심사로,</h2>
+            <h2>귀하의 신용등급에 영향을 끼치지 않습니다.</h2>
+            <h2>모아중개만의 새로운 비대면심사로 <br>편리하고 빠르게 이용해 보세요.</h2>
+        </div><br><br>
+        <div class="btn">
+            <button class="blue" onclick="javascript:window.scrollTo(0,0);return validate_form('new_form');">신청서 작성하기</button>
+        </div>
+    </div>
+    
     {%csrf_token%}
     <form action="{%url 'web:new_form'%}" method="post">
-    <div id="form_2" class="form_2_box">
+    <div id="form_2" class="form_2_box hidden">
         <div class="progress_box">
             <div class="progress_1" style="background-color:#8a8a8a;"></div>
             <div class="progress_2"></div>
@@ -46,7 +58,7 @@
             <input class="radio" id="woman" type="radio" name="gender" value="woman">
             <label for='woman'>여성</label>
         </div><br><br>
-        <div class="btn_box"onclick="return validate_form('form_2');">
+        <div class="btn_box"onclick="javascript:window.scrollTo(0,0);return validate_form('form_2');">
             다음으로
         </div>
     </div>
@@ -77,7 +89,7 @@
         <div class="input_box">
             <input id="pay_day" type="number" name="pay_day" placeholder="급여일 입력">
         </div><br><br>
-        <div class="btn_box"onclick="return validate_form('form_3');">
+        <div class="btn_box"onclick="javascript:window.scrollTo(0,0);return validate_form('form_3');">
             다음으로
         </div>
     </div>
@@ -118,7 +130,7 @@
         <div class="input_box">
             <input id="holding_credit" type="number" name="holding_credit" placeholder="(단위: 만원)">
         </div><br><br>
-        <div class="btn_box"onclick="return validate_form('form_4');">
+        <div class="btn_box"onclick="javascript:window.scrollTo(0,0);return validate_form('form_4');">
             다음으로
         </div>
     </div>
@@ -175,7 +187,7 @@
             <input class="radio" id="holding_house_family" type="radio" name="holding_house" value="famliy_hold">
             <label for='holding_house_family'>가족 명의</label>
         </div><br><br>
-        <div class="btn_box" onclick="return validate_form('form_5');">
+        <div class="btn_box" onclick="javascript:window.scrollTo(0,0);return validate_form('form_5');">
             다음으로
         </div>
     </div>
@@ -206,9 +218,9 @@
             <label for='credit_date_monthly'>월상품</label>
         </div><br><br>
         <div class="btn">
-            <button type="submit" class="blue" onclick="return validate_form('form_6')">신청 완료</button>
+            <button type="submit" class="blue" onclick="javascript:window.scrollTo(0,0);return validate_form('form_6');">신청 완료</button>
         </div>
     </div>
-
     </form>
+    
 {%endblock%}
