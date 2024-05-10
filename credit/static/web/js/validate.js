@@ -1,3 +1,4 @@
+
 function validate_form(page) {
        var re1 = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1,10}$/;
        var re2 = /^[0-9]{1,4}$/;
@@ -35,8 +36,8 @@ function validate_form(page) {
                return false;
            }
 
-           document.getElementsByClassName('form_2_box').className += ' hidden';
-           document.getElementsByClassName('form_3_box').className.remove('hidden');
+           document.getElementById('form_2').className += ' hidden';
+           document.getElementById('form_3').className -=' hidden';
        }
 
        else if(page=='form_3'){
@@ -50,14 +51,25 @@ function validate_form(page) {
            if(!check(re5,pay_day,"급여일을 제대로 입력해주세요. 1~31 까지의 숫자만 입력가능합니다.")) {
                return false;
            }
+
+           document.getElementById('form_3').className += ' hidden';
+           document.getElementById('form_4').className -=' hidden';
        }
 
        else if(page=='form_4'){
            var credit_grade = document.getElementById("credit_grade");
 
-           if(!check(re6,credit_grade,"신용점수를 제대로 입력해주세요. 1~10 까지의 숫자만 입력가능합니다.")) {
+           if(!check(re6,credit_grade,"신용점수를 제대로 입력해주세요. 0~1000 까지의 숫자만 입력가능합니다.")) {
                return false;
            }
+
+           document.getElementById('form_4').className += ' hidden';
+           document.getElementById('form_5').className -=' hidden';
+       }
+
+       else if(page=='form_5'){
+           document.getElementById('form_5').className += ' hidden';
+           document.getElementById('form_6').className -=' hidden';
        }
 
        else if(page=='form_6'){
@@ -68,7 +80,18 @@ function validate_form(page) {
            }
        }
 
+       else if(page=='new_form'){
+           document.getElementById('form_1').className += ' hidden';
+           document.getElementById('form_2').className -=' hidden';
+       }
+
+
    }
+
+function back_btn(){
+    alert("심사 신청을 취소하고 처음으로 돌아갑니다.\n-모아중개-");
+    location.href='http://222.122.202.153';
+}
 
 
 function validate_login() {
