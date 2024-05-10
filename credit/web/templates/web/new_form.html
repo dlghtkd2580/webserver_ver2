@@ -1,134 +1,226 @@
+{%extends 'web/form_base.html'%}
+{%load static%}
+{%block content%}
+    <div id="form_1" class="form_1_box">
+        <div class="form_1_intro_box">
+            <h1>심사를 시작합니다!</h1><br>
+            <h2>해당 심사는 모아중개 제휴업체(개인대부업체)만의 심사로,</h2>
+            <h2>귀하의 신용등급에 영향을 끼치지 않습니다.</h2>
+            <h2>모아중개만의 새로운 비대면심사로 <br>편리하고 빠르게 이용해 보세요.</h2>
+        </div><br><br>
+        <div class="btn">
+            <button class="blue" onclick="javascript:window.scrollTo(0,0);return validate_form('new_form');">신청서 작성하기</button>
+        </div>
+    </div>
+    
+    {%csrf_token%}
+    <form action="{%url 'web:new_form'%}" method="post">
+    <div id="form_2" class="form_2_box hidden">
+        <div class="progress_box">
+            <div class="progress_1" style="background-color:#8a8a8a;"></div>
+            <div class="progress_2"></div>
+            <div class="progress_3"></div>
+            <div class="progress_4"></div>
+            <div class="progress_5"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>성함을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="name" type="text" name="name" placeholder="이름 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>나이를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="age" type="number" name="age" placeholder="나이 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>휴대폰 번호를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="phone_number_1" type="text" name="phone_number_1" value="010" placeholder="입력">
+            <input id="phone_number_2" type="text" name="phone_number_2" placeholder="앞 번호">
+            <input id="phone_number_3" type="text" name="phone_number_3" placeholder="뒷 번호">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>거주지를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="region" type="text" name="region" placeholder="주소 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>성별을 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="man" type="radio" name="gender" value="man" checked>
+            <label for='man'>남성</label>
+            <input class="radio" id="woman" type="radio" name="gender" value="woman">
+            <label for='woman'>여성</label>
+        </div><br><br>
+        <div class="btn_box"onclick="javascript:window.scrollTo(0,0);return validate_form('form_2');">
+            다음으로
+        </div>
+    </div>
 
-function validate_form(page) {
-       var re1 = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1,10}$/;
-       var re2 = /^[0-9]{1,4}$/;
-       var re3 = /^[0-9]{1,3}$/;
-       var re4 = /^[0-9]{1,9}$/;
-       var re5 = /^[0-9]{1,2}$/;
-       var re6 = /^[0-9]{1,4}$/;
-       var re7 = /^[0-9]{1,9}$/;
+    <div id="form_3" class="form_3_box hidden">
+        <div class="progress_box">
+            <div class="progress_1"></div>
+            <div class="progress_2" style="background-color:#8a8a8a;"></div>
+            <div class="progress_3"></div>
+            <div class="progress_4"></div>
+            <div class="progress_5"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>직업을 직장명과 함께 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="job" type="text" name="job" placeholder="구체적으로 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>급여(웝 수입)을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="pay" type="number" name="pay" placeholder="(단위: 만원)">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>급여 일(정산 일)을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="pay_day" type="number" name="pay_day" placeholder="급여일 입력">
+        </div><br><br>
+        <div class="btn_box"onclick="javascript:window.scrollTo(0,0);return validate_form('form_3');">
+            다음으로
+        </div>
+    </div>
 
-       var re = /^[a-zA-Z0-9]{4,20}$/;
-       var re = /^.{1,100}$/;
-       var re = /^.{1,5000}$/;
+    <div id="form_4" class="form_4_box hidden">
+        <div class="progress_box">
+            <div class="progress_1"></div>
+            <div class="progress_2"></div>
+            <div class="progress_3" style="background-color:#8a8a8a;"></div>
+            <div class="progress_4"></div>
+            <div class="progress_5"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>개인업체 사용여부를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="use_bool_yes" type="radio" name="use_bool" value="yes" checked>
+            <label for='use_bool_yes'>예</label>
+            <input  class="radio" id="use_bool_no" type="radio" name="use_bool" value="no">
+            <label for='use_bool_no'>아니오</label>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>개인업체를 사용해보신 적이 있으시다면,</h1><br>
+            <h1>남은 금액 및 상환날짜를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box no_line">
+            <textarea id="use_ps" name="use_ps" rows="20" cols="50"></textarea>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>신용 점수를 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="credit_grade" type="number" name="credit_grade" placeholder="점수 입력">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>은행권 기대출을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="holding_credit" type="number" name="holding_credit" placeholder="(단위: 만원)">
+        </div><br><br>
+        <div class="btn_box"onclick="javascript:window.scrollTo(0,0);return validate_form('form_4');">
+            다음으로
+        </div>
+    </div>
 
-       if(page=='form_2'){
-           var name = document.getElementById("name");
-           var age = document.getElementById("age");
-           var phone_number_1 = document.getElementById("phone_number_1");
-           var phone_number_2 = document.getElementById("phone_number_2");
-           var phone_number_3 = document.getElementById("phone_number_3");
-           var region = document.getElementById("region");
+    <div id="form_5" class="form_5_box hidden">
+        <div class="progress_box">
+                <div class="progress_1"></div>
+                <div class="progress_2"></div>
+                <div class="progress_3"></div>
+                <div class="progress_4" style="background-color:#8a8a8a;" ></div>
+                <div class="progress_5"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>결혼 여부를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="not_marry" type="radio" name="is_married" value="not_marry" checked>
+            <label for='not_marry'>미혼</label>
+            <input class="radio" id="marry" type="radio" name="is_married" value="marry">
+            <label for='marry'>기혼</label>
+            <input class="radio" id="miss_marry" type="radio" name="is_married" value="miss_marry">
+            <label for='miss_marry'>이혼</label>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>자녀 여부를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="not_child" type="radio" name="is_child" value="not_child" checked>
+            <label for='not_child'>없음</label>
+            <input class="radio" id="raise_child" type="radio" name="is_child" value="raise_child">
+            <label for='raise_child'>있음(육아)</label>
+            <input class="radio" id="not_raise_child" type="radio" name="is_child" value="not_raise_child">
+            <label for='not_raise_child'>있음(육아 안함)</label>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>자동차 소유 여부를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="holding_car_yes" type="radio" name="holding_car" value="yes" checked>
+            <label for='holding_car_yes'>예</label>
+            <input class="radio" id="holding_car_no" type="radio" name="holding_car" value="no">
+            <label for='holding_car_no'>아니오</label>
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>거주지 형태를 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="holding_house_monthly" type="radio" name="holding_house" value="monthly" checked>
+            <label for='holding_house_monthly'>월세</label>
+            <input class="radio" id="holding_house_charter" type="radio" name="holding_house" value="charter">
+            <label for='holding_house_charter'>전세</label>
+            <input class="radio" id="holding_house_hold" type="radio" name="holding_house" value="hold">
+            <label for='holding_house_hold'>본인 명의</label>
+            <input class="radio" id="holding_house_family" type="radio" name="holding_house" value="famliy_hold">
+            <label for='holding_house_family'>가족 명의</label>
+        </div><br><br>
+        <div class="btn_box" onclick="javascript:window.scrollTo(0,0);return validate_form('form_5');">
+            다음으로
+        </div>
+    </div>
 
-           if(!check(re1,name,"신청자 이름을 제대로 입력해주세요.")) {
-               return false;
-           }
-           if(!check(re3,age,"나이를 제대로 입력해주세요.")) {
-               return false;
-           }
-           if(!check(re2,phone_number_1,"전화번호 첫번쨰칸을 제대로 입력해주세요.")) {
-               return false;
-           }
-           if(!check(re2,phone_number_2,"전화번호 두번째칸을 제대로 입력해주세요.")) {
-               return false;
-           }
-           if(!check(re2,phone_number_3,"전화번호를 세번째칸을 입력해주세요.")) {
-               return false;
-           }
-
-           document.getElementById('form_2').className += ' hidden';
-           document.getElementById('form_3').className -=' hidden';
-       }
-
-       else if(page=='form_3'){
-
-           var pay = document.getElementById("pay");
-           var pay_day = document.getElementById("pay_day");
-
-           if(!check(re4,pay,"월수입을 제대로 입력해주세요. 숫자만 입력가능합니다. (단위: 만원)")) {
-               return false;
-           }
-           if(!check(re5,pay_day,"급여일을 제대로 입력해주세요. 1~31 까지의 숫자만 입력가능합니다.")) {
-               return false;
-           }
-
-           document.getElementById('form_3').className += ' hidden';
-           document.getElementById('form_4').className -=' hidden';
-       }
-
-       else if(page=='form_4'){
-           var credit_grade = document.getElementById("credit_grade");
-
-           if(!check(re6,credit_grade,"신용점수를 제대로 입력해주세요. 0~1000 까지의 숫자만 입력가능합니다.")) {
-               return false;
-           }
-
-           document.getElementById('form_4').className += ' hidden';
-           document.getElementById('form_5').className -=' hidden';
-       }
-
-       else if(page=='form_5'){
-           document.getElementById('form_5').className += ' hidden';
-           document.getElementById('form_6').className -=' hidden';
-       }
-
-       else if(page=='form_6'){
-           var credit_amount = document.getElementById("credit_amount");
-
-           if(!check(re7,credit_amount,"대출신청금액을 제대로 입력해주세요. 숫자만 입력가능합니다. (단위: 만원)")) {
-               return false;
-           }
-       }
-
-       else if(page=='new_form'){
-           document.getElementById('form_1').className += ' hidden';
-           document.getElementById('form_2').className -=' hidden';
-       }
-
-
-   }
-
-function back_btn(){
-    alert("심사 신청을 취소하고 처음으로 돌아갑니다.\n-모아중개-");
-    location.href='http://222.122.202.153';
-}
-
-
-function validate_login() {
-
-        var re1 = /^[a-zA-Z0-9]{1,20}$/;
-        var re2 = /^.{1,20}$/;
-
-        var user_id = document.getElementById("user_id");
-        var user_pw = document.getElementById("user_pw");
-
-        if(!check(re1, user_id, "아이디는 영문 또는 숫자 1~20자 이내 입니다.")) {
-            return false;
-        }
-
-        if(!check(re2, user_pw, "비밀번호는 1~20자 이내 입니다.")) {
-            return false;
-        }
-
-    }
-
-  function validate_edit(){
-
-    var re1 = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣_]{1,20}$/;
-
-    var file_new_name = document.getElementById("file_new_name");
-
-    if(!check(re1, file_new_name, "글씨와 _(언더바)만 20자이내로 입력가능합니다.")) {
-        return false;
-    }
-
-  }
-
-function check(re, what, message) {
-    if(re.test(what.value)) {
-        return true;
-    }
-    alert(message);
-    what.value = "";
-    what.focus();
-}
+    <div id="form_6" class="form_6_box hidden">
+         <div class="progress_box">
+                <div class="progress_1"></div>
+                <div class="progress_2"></div>
+                <div class="progress_3"></div>
+                <div class="progress_4"></div>
+                <div class="progress_5" style="background-color:#8a8a8a;"></div>
+        </div><br><br><br>
+        <div class="form_2_intro_box">
+            <h1>심사 신청 금액을 입력해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input id="credit_amount" type="number" name="credit_amount" placeholder="(단위: 만원)">
+        </div><br><br>
+        <div class="form_2_intro_box">
+            <h1>원하는 상품을 선택해 주세요.</h1>
+        </div><br><br>
+        <div class="input_box">
+            <input class="radio" id="credit_date_daily" type="radio" name="credit_date" value="daily" checked>
+            <label for='credit_date_daily'>일수</label>
+            <input class="radio" id="credit_date_weekly" type="radio" name="credit_date" value="weekly">
+            <label for='credit_date_weekly'>주상품</label>
+            <input class="radio" id="credit_date_monthly" type="radio" name="credit_date" value="monthly">
+            <label for='credit_date_monthly'>월상품</label>
+        </div><br><br>
+        <div class="btn">
+            <button type="submit" class="blue" onclick="javascript:window.scrollTo(0,0);return validate_form('form_6');">신청 완료</button>
+        </div>
+    </div>
+    </form>
+    
+{%endblock%}
