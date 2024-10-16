@@ -16,6 +16,10 @@
   </form>
   <br><br>
   <p>
+    {%for word, cnt in word_cnt.items%}
+      * {{word}} 단어 {{cnt}} 번 조회됨<br>
+    {%endfor%}
+    <br><br>
     {%for line in text%}
       {{line|linebreaks}}
     {%endfor%}
