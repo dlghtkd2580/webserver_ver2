@@ -90,7 +90,7 @@ function validate_form(page) {
 
 function back_btn(){
     alert("심사 신청을 취소하고 처음으로 돌아갑니다.\n-모아중개-");
-    location.href='http://222.122.202.153';
+    window.history.back();
 }
 
 
