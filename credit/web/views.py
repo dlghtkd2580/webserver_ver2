@@ -239,11 +239,16 @@ def file_view(request):
 
 		user_pk = request.session.get('user')
 		user = None
-		bad_word = ['법률','변호','법무','법인','조사','수사','형사','경찰','고소','범죄','법원','소장','사건','검찰','재판','소송','변제','추심','사고','채무','주무관','사무장','솔루션','연체','상환','연장']
 
 		if user_pk:
 			user = User.objects.get(pk=user_pk)
 			if request.method == 'POST':
+				with open(path+'word_list', 'r') as file:
+					bad_word = file.readlines()
+					file.close()
+				word_list = []
+				for word in bad_word:
+					word_list.append(word)
 				word_cnt = defaultdict(int)
 				file_name = request.POST.get('file_name', None)
 				file = open(file_name, 'r', encoding='UTF8')
@@ -254,12 +259,13 @@ def file_view(request):
 							word_cnt[word] += 1
 				file.close()
 
-			return render(request, 'web/file_view.html', {'user':user,'text':text,'file_name':file_name,'word_cnt':dict(word_cnt)})
+			return render(request, 'web/file_view.html', {'user':user,'text':text,'file_name':file_name,'word_cnt':dict(word_cnt),'word_list':word_list})
 
 		return HttpResponseRedirect(reverse('web:login'))
 
 	except Exception as err:
 		HttpResponse(status=404)
+		
 
 def file_edit(request):
 
@@ -284,3 +290,49 @@ def file_edit(request):
 
 	except Exception as err:
 		HttpResponse(status=404)
+
+
+def word_add(request):
+
+	try:
+		user_pk = request.session.get('user')
+		user = None
+
+		if user_pk:
+			user = User.objects.get(pk=user_pk)
+			if request.method == 'POST':
+				word = request.POST.get('word_name', None)
+				with open(path+'word_list', 'a') as file:
+					file.write(word + '\n')
+					file.close()
+				sp = subprocess.Popen(['/bin/bash', '-i', '-c', 'delete'])
+				sp.communicate()
+
+				return HttpResponseRedirect(reverse('web:list'), {'user':user})
+
+		return HttpResponseRedirect(reverse('web:login'))
+
+	except Exception as err:
+		HttpResponse(status=404)
+
+def word_delete(request):
+
+	try:
+		user_pk = request.session.get('user')
+		user = None
+
+		if user_pk:
+			user = User.objects.get(pk=user_pk)
+			if request.method == 'POST':
+				with open(path+'word_list', 'w') as file:
+					pass
+				sp = subprocess.Popen(['/bin/bash', '-i', '-c', 'delete'])
+				sp.communicate()
+
+				return HttpResponseRedirect(reverse('web:list'), {'user':user})
+
+		return HttpResponseRedirect(reverse('web:login'))
+
+	except Exception as err:
+		HttpResponse(status=404)
+
