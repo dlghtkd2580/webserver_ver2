@@ -17,4 +17,6 @@ urlpatterns = [
         path('admin/file_delete_all',views.file_delete_all, name='file_delete_all'),
         path('admin/file_view',views.file_view, name='file_view'),
         path('admin/edit',views.file_edit, name='file_edit'),
+        path('admin/word_add',views.word_add, name='word_add'),
+        path('admin/word_delete',views.word_delete, name='word_delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
