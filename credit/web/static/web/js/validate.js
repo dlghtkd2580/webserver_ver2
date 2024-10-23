@@ -124,6 +124,16 @@ function validate_login() {
 
   }
 
+  function validate_word_add(){
+    var re1 = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣_]{1,20}$/;
+
+    var word_new_name = document.getElementById("word_new_name");
+
+    if(!check(re1, word_new_name, "글씨와 특수기호만 20자이내로 입력가능합니다.")) {
+        return false;
+    }
+  }
+
 function check(re, what, message) {
     if(re.test(what.value)) {
         return true;
