@@ -69,7 +69,7 @@
   display: inline-block;
 }
 
-.file_view_btn button{
+.file_view_btn{
   cursor: pointer;
   background: none;
   border: 0px;
