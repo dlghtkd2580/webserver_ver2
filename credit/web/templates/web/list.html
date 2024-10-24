@@ -25,19 +25,14 @@
     <a class="file_delete_all_btn" onclick="return delete_all_check('파일');" href="{%url 'web:file_delete_all'%}">전체삭제</a>
     <br><br><br><br>
     {%for time_arr,time_sorted_txt_list in zip_file%}
-    {%if time_sorted_txt_list == '/root/word_list'%}
-        {%else%}
-      <form class="file_view_btn" name="file_view_btn" action="{%url 'web:file_view'%}" method="post">
-        {%csrf_token%}
-        <input style="display:none;" type="text" name="file_name" value="{{time_sorted_txt_list}}">
-        <button type="submit">[{{forloop.revcounter}}] {{time_arr}} {{time_sorted_txt_list}}</button>
-      </form>
+      <a class="file_view_btn" href="{%url 'web:file_view' file_pk=forloop.revcounter%}">
+        [{{forloop.revcounter}}] {{time_arr}} {{time_sorted_txt_list}}
+      </a>
       <form class="file_delete_btn" name="file_delete_btn" action="{%url 'web:file_delete'%}" method="post">
         {%csrf_token%}
         <input style="display:none;" type="text" name="file_name" value="{{time_sorted_txt_list}}">
         <button type="submit">삭제</button>
       </form>
-    {%endif%}
       <br><br>
     {%endfor%}
   </div>
