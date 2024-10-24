@@ -5,16 +5,16 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.shortcuts import redirect
 from django.urls import reverse
-from collections import defaultdict
 from datetime import datetime
+from collections import defaultdict
 from .models import *
 import datetime
 import os
 import subprocess
+import re
 
 
 path = "/root/"
-
 @method_decorator(csrf_exempt)
 def new_form(request):
 
@@ -61,7 +61,7 @@ def login(request):
 
 	    if user_pk:
 	        user = User.objects.get(pk=user_pk)
-	        return render(request, 'web/list.html', {'user':user})
+	        return HttpResponseRedirect(reverse('web:list'), {'user':user})
 
 	    if request.method == 'POST':
 
@@ -125,7 +125,6 @@ def list(request):
 			txt_list = time_sorted_txt_list
 			
 			return render(request, 'web/list.html', {'user':user,'forms':forms,'zip_file':zip_file,'txt_list':txt_list})
-
 
 
 		return HttpResponseRedirect(reverse('web:login'))
@@ -233,7 +232,7 @@ def file_delete_all(request):
 	except Exception as err:
 		HttpResponse(status=404)
 
-def file_view(request):
+def file_view(request,file_pk):
 
 	try:
 
@@ -242,30 +241,37 @@ def file_view(request):
 
 		if user_pk:
 			user = User.objects.get(pk=user_pk)
-			if request.method == 'POST':
-				with open(path+'word_list', 'r') as file:
-					bad_word = file.readlines()
-					file.close()
-				word_list = []
+			word_cnt = defaultdict(int)
+			time_arr = []
+			word_list = []
+
+			with open(path+'word_list', 'r') as file:
+				bad_word = file.readlines()
 				for word in bad_word:
-					word_list.append(word)
-				word_cnt = defaultdict(int)
-				file_name = request.POST.get('file_name', None)
-				file = open(file_name, 'r', encoding='UTF8')
-				text = file.readlines()
-				for line in text:
-					for word in bad_word:
-						if word in line:
-							word_cnt[word] += 1
+					word_list.append(word.strip())
 				file.close()
 
-			return render(request, 'web/file_view.html', {'user':user,'text':text,'file_name':file_name,'word_cnt':dict(word_cnt),'word_list':word_list})
+			file_list = os.listdir(path)
+			file_list = [file for file in file_list if file.endswith(".txt")]
+			full_list = [os.path.join(path, i) for i in file_list]
+			time_sorted_txt_list = sorted(full_list, key=os.path.getctime, reverse=True)
+			txt_list = time_sorted_txt_list
+			file_name = txt_list[len(txt_list)-file_pk]
+			file = open(file_name, 'r', encoding='UTF8')
+			text = file.readlines()
+
+			for line in text:
+				for word in word_list:
+					if word in line:
+						word_cnt[word] += 1
+			file.close()
+
+			return render(request, 'web/file_view.html', {'user':user,'text':text,'file_name':file_name,'word_cnt':dict(word_cnt),'word_list':word_list,'file_pk':file_pk})
 
 		return HttpResponseRedirect(reverse('web:login'))
 
 	except Exception as err:
 		HttpResponse(status=404)
-		
 
 def file_edit(request):
 
@@ -291,8 +297,7 @@ def file_edit(request):
 	except Exception as err:
 		HttpResponse(status=404)
 
-
-def word_add(request):
+def word_add(request, file_pk):
 
 	try:
 		user_pk = request.session.get('user')
@@ -308,14 +313,16 @@ def word_add(request):
 				sp = subprocess.Popen(['/bin/bash', '-i', '-c', 'delete'])
 				sp.communicate()
 
-				return HttpResponseRedirect(reverse('web:list'), {'user':user})
+				url = reverse('web:file_view', args=[file_pk])
+
+				return HttpResponseRedirect(url)
 
 		return HttpResponseRedirect(reverse('web:login'))
 
 	except Exception as err:
 		HttpResponse(status=404)
 
-def word_delete(request):
+def word_delete(request, file_pk):
 
 	try:
 		user_pk = request.session.get('user')
@@ -329,10 +336,11 @@ def word_delete(request):
 				sp = subprocess.Popen(['/bin/bash', '-i', '-c', 'delete'])
 				sp.communicate()
 
-				return HttpResponseRedirect(reverse('web:list'), {'user':user})
+				url = reverse('web:file_view', args=[file_pk])
+
+				return HttpResponseRedirect(url)
 
 		return HttpResponseRedirect(reverse('web:login'))
 
 	except Exception as err:
 		HttpResponse(status=404)
-
