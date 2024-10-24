@@ -15,6 +15,7 @@ import re
 
 
 path = "/root/"
+
 @method_decorator(csrf_exempt)
 def new_form(request):
 
@@ -245,11 +246,15 @@ def file_view(request,file_pk):
 			time_arr = []
 			word_list = []
 
-			with open(path+'word_list', 'r') as file:
-				bad_word = file.readlines()
-				for word in bad_word:
-					word_list.append(word.strip())
-				file.close()
+			if not os.path.exists(path + 'word_list'):
+				pass
+
+			else:
+				with open(path+'word_list', 'r') as file:
+					bad_word = file.readlines()
+					for word in bad_word:
+						word_list.append(word.strip())
+					file.close()
 
 			file_list = os.listdir(path)
 			file_list = [file for file in file_list if file.endswith(".txt")]
@@ -307,9 +312,14 @@ def word_add(request, file_pk):
 			user = User.objects.get(pk=user_pk)
 			if request.method == 'POST':
 				word = request.POST.get('word_name', None)
-				with open(path+'word_list', 'a') as file:
-					file.write(word + '\n')
-					file.close()
+				if not os.path.exists(path+'word_list'):
+					with open(path+'word_list','w') as file:
+						file.write(word + '\n')
+						file.close()
+				else:
+					with open(path+'word_list', 'a') as file:
+						file.write(word + '\n')
+						file.close()
 				sp = subprocess.Popen(['/bin/bash', '-i', '-c', 'delete'])
 				sp.communicate()
 
@@ -331,8 +341,11 @@ def word_delete(request, file_pk):
 		if user_pk:
 			user = User.objects.get(pk=user_pk)
 			if request.method == 'POST':
-				with open(path+'word_list', 'w') as file:
+				if not os.path.exists(path + 'word_list'):
 					pass
+				else:
+					with open(path+'word_list', 'w') as file:
+						pass
 				sp = subprocess.Popen(['/bin/bash', '-i', '-c', 'delete'])
 				sp.communicate()
 
