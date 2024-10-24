@@ -57,6 +57,39 @@
   font-size: 16px;
 }
 
+
+.word_add_btn, .word_delete_btn{
+  display: inline;
+}
+
+.word_add_btn > button, .word_delete_btn > button{
+  display: inline;
+  margin-left: 8px;
+  border-radius: 6px;
+  background: #1e2d3b;
+  color:white;
+  border: 0px;
+  font-size: 16px;
+  font-weight: 100;
+  display: inline-block;
+  width: 90px;
+  height: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.word_add_btn > input{
+  display: inline;
+  margin-left: 16px;
+  border: 1px solid gray;
+  background: white;
+  border-radius: 3px;
+  color:black;
+  width: 150px;
+  height: 24px;
+  font-size: 16px;
+}
+
 @media all and (max-width:1280px) {
 
   .file_text p {
