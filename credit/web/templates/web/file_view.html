@@ -3,11 +3,7 @@
 {%block content%}
 <div class="file_text">
   <h1>
-      파일명 :
-      {%if file_name == 'word_list.txt'%}
-      {%else%}
-          {{file_name}}
-      {%endif%}
+      파일명 : {{file_name}}
   </h1>
   <form class="file_delete_btn" name="file_delete_btn" action="{%url 'web:file_delete'%}" method="post">
     {%csrf_token%}
@@ -21,17 +17,17 @@
     <button type="submit">수정</button>
   </form>
   <br><br>
-  <h1>필터링 :
+  <h1>필터링 단어 :
       {%for word in word_list%}
-          {{word}}
+          [{{word}}]
       {%endfor%}
   </h1>
-  <form class="word_add_btn" action="{%url 'web:word_add'%}" name="word_add_btn" method="post" onsubmit="return validate_word_add();">
+  <form class="word_add_btn" action="{%url 'web:word_add' file_pk=file_pk%}" name="word_add_btn" method="post" onsubmit="return validate_word_add();">
       {%csrf_token%}
       <input id="word_new_name" type="text" name="word_name" placeholder="단어 입력">
       <button type="submit">단어추가</button>
   </form>
-  <form class="word_delete_btn" action="{%url 'web:word_delete'%}" name="word_delete_btn" method="post">
+  <form class="word_delete_btn" action="{%url 'web:word_delete' file_pk=file_pk%}" name="word_delete_btn" method="post">
       {%csrf_token%}
       <button type="submit">전체삭제</button>
   </form>
