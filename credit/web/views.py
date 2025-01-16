@@ -44,6 +44,27 @@ def new_form(request):
 				credit_date=request.POST.get('credit_date', None)
 			)
 
+			Backup.objects.create(
+				name=request.POST['name'],
+				phone_number=add_phone_number,
+				region=request.POST['region'],
+				age=request.POST['age'],
+				gender=request.POST['gender'],
+				job=request.POST['job'],
+				pay=request.POST['pay'],
+				pay_day=request.POST['pay_day'],
+				use_bool=request.POST['use_bool'],
+				use_ps=request.POST['use_ps'],
+				credit_grade=request.POST['credit_grade'],
+				holding_credit=request.POST['holding_credit'],
+				is_married=request.POST['is_married'],
+				is_child=request.POST['is_child'],
+				holding_house=request.POST['holding_house'],
+				holding_car=request.POST['holding_car'],
+				credit_amount=request.POST['credit_amount'],
+				credit_date=request.POST.get('credit_date', None)
+			)
+
 			return render(request, 'web/success_form.html')
 
 		else:
