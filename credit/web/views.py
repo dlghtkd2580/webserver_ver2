@@ -14,6 +14,8 @@ import subprocess
 import re
 
 
+# 장고 버전 4.2.18 에서만 작동함
+
 path = "/root/"
 
 @method_decorator(csrf_exempt)
